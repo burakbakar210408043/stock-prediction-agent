@@ -3,20 +3,13 @@ import os
 from tools.data_fetcher import get_stock_data
 from tools.forecaster import predict_stock_trend
 
-# API Key yapılandırması
-# os.environ["GOOGLE_API_KEY"] = "SENIN_API_KEYIN"
 
 def analyze_stock(user_message):
     """
     Kullanıcı mesajını alır, gerekirse araçları çağırır ve yorum yapar.
     """
-    model = genai.GenerativeModel('gemini-1.5-flash') # Hızlı ve tool calling destekli
+    model = genai.GenerativeModel('gemini-1.5-flash') 
     
-    # Tool'ları modele tanıtma (Function Calling yapısı)
-    # Not: Gemini SDK'sında tools parametresi ile bu fonksiyonlar bağlanır.
-    # Basitlik adına burada mantığı "ReAct" (Reasoning + Acting) olarak simüle ediyorum.
-    
-    # 1. LLM hisse kodunu bulsun
     prompt = f"""
     Sen uzman bir borsa asistanısın. Kullanıcının sorduğu hisse senedini analiz etmelisin.
     Kullanıcı mesajı: "{user_message}"
@@ -28,11 +21,7 @@ def analyze_stock(user_message):
     4. Sonucu finansal okuryazarlığa uygun şekilde yorumla. Yatırım tavsiyesi değildir uyarısını ekle.
     """
     
-    # Burada normalde "Function Calling" ile otomatik tetikleme yapılır.
-    # Ancak manuel akış şöyle olur:
-    
-    # Örnek statik akış (Kodun çalışması için):
-    ticker = "THYAO.IS" # Bu kısmı LLM'den çektireceğiz
+    ticker = "THYAO.IS" 
     data = get_stock_data(ticker)
     
     if data is not None:
