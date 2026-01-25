@@ -4,7 +4,7 @@ echo   BORSA AJANI BASLATILIYOR...
 echo   Lutfen tarayicinin acilmasini bekle.
 echo ==========================================
 
-:: Kodun oldugu klasore git (Hata almamak icin garanti yontem)
+:: Kodun oldugu klasore git
 cd /d "%~dp0"
 
 :: Uygulamayi calistir
